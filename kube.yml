@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-proj
+  labels:
+    app: kubernetes-proj
+spec:
+  selector:
+    matchLabels:
+      app: kubernetes-proj
+  template:
+    metadata:
+      labels:
+        app: kubernetes-proj
+    spec:
+    # all the required containers are present here for deployment
+      containers: 
+      - name: kubernetes-proj
+        image: ok/helloworld
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Never
+      - name: kubernetes-proj
+        image: ok/helloworld
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Never
+      - name: kubernetes-proj
+        image: ok/helloworld
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Never
+      - name: kubernetes-proj
+        image: ok/helloworld
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Never
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-proj
+  labels:
+    app: kubernetes-proj
+spec:
+  selector:
+    app: kubernetes-proj
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
+
